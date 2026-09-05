@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- **`layout`** option on the Entity widget: `auto` (default),
+  `inline` (icon in its own column beside the value) or `stacked`
+  (icon on the name's line so the value spans the full card
+  width). Pin it when a dashboard's entity cards vary in size and
+  would otherwise show a mix of both arrangements.
+
+### Fixed
+
+- **Entity widget layout**: the redesign in 0.7.0 sized the card
+  frame from the widget's full height rather than one row of it,
+  which inflated the padding, corner radius and `left_bar` accent
+  roughly 2.5x, and pinned the value text at 0.21x the widget
+  height regardless of the space available. Card framing now
+  scales with the card's smaller dimension, and the type scale is
+  fitted to the content box: the value grows to fill the height it
+  is given, clamped only by the width it has to fit. Text is
+  placed on measured cap heights so the visible ink — not the
+  font's line box — is what gets centred, and a name too wide for
+  the card shrinks and then truncates instead of overflowing or
+  shrinking the value.
+
 ## [0.7.0] - 2026-08-08
 
 ### Added
