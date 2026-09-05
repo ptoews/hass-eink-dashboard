@@ -706,6 +706,20 @@ export interface EntityWidget extends WidgetBase {
   /** Text alignment of the name. Defaults to `"left"`. */
   name_align?: "left" | "right";
   /**
+   * How the icon relates to the value and name. Defaults to
+   * `"auto"`.
+   * - `"inline"` — the icon takes its own column on the left, with
+   *   the value and name stacked beside it.
+   * - `"stacked"` — the icon moves onto the name's line so the
+   *   value spans the full card width.
+   * - `"auto"` — whichever of the two fits the card's proportions
+   *   with the larger value.
+   *
+   * Pin it to `"inline"` or `"stacked"` when a dashboard's entity
+   * cards vary in size and would otherwise show a mix of both.
+   */
+  layout?: "auto" | "inline" | "stacked";
+  /**
    * HA conditions that trigger inverted rendering (black card,
    * white text) as an e-ink attention signal. Same condition
    * format as `visibility`. The entity renders inverted when the

@@ -430,6 +430,30 @@ function nameAlignSelector(): HaFormSchema {
 }
 
 /**
+ * Entity arrangement dropdown selector.
+ *
+ * Pins how the icon relates to the value and name, instead of
+ * letting each card pick the arrangement that fits it best.
+ *
+ * @returns A single ha-form schema entry.
+ */
+function entityLayoutSelector(): HaFormSchema {
+  return {
+    name: "layout",
+    default: "auto",
+    selector: {
+      select: {
+        options: [
+          { value: "auto", label: "Auto" },
+          { value: "inline", label: "Icon beside value" },
+          { value: "stacked", label: "Icon on the name line" },
+        ],
+      },
+    },
+  };
+}
+
+/**
  * Heading text alignment dropdown selector.
  *
  * @returns A single ha-form schema entry.
@@ -821,7 +845,7 @@ export const SCHEMAS: Record<
       ],
     },
     {
-      name: "layout",
+      name: "layout_pos",
       type: "expandable",
       flatten: true,
       title: "Layout",
@@ -837,6 +861,7 @@ export const SCHEMAS: Record<
       schema: [
         cardStyleSelector(),
         iconStyleSelector(),
+        entityLayoutSelector(),
         boldValueSelector(),
         namePositionSelector(),
         nameAlignSelector(),
